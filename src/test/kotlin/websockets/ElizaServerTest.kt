@@ -4,7 +4,6 @@ package websockets
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.*
@@ -49,9 +48,9 @@ class ElizaServerTest {
         // assertEquals(XXX, list.size) COMPLETE ME
         // assertEquals(4, list.size)
         assertTrue(4 <= list.size)
-        //assertEquals(5, list.size)
+        // assertEquals(5, list.size)
         // assertEquals(XXX, list[XXX]) COMPLETE ME
-        assertEquals("Is that the real reason?",list[3])
+        assertEquals("Is that the real reason?", list[3])
     }
 }
 
@@ -71,9 +70,8 @@ class ElizaOnOpenMessageHandlerToComplete(private val list: MutableList<String>,
     fun onMessage(message: String, session: Session) {
         list.add(message)
         latch.countDown()
-
-        if (list.size == 3){
-            with(session.basicRemote){
+        if (list.size == 3) {
+            with(session.basicRemote) {
                 sendText("because ...")
             }
         }
